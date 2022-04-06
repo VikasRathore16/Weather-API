@@ -1,0 +1,70 @@
+<?php
+date_default_timezone_set('Asia/Kolkata');
+$time =  (new DateTime())->format("H:i");
+?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body class='bg-dark container'>
+
+    <?php if ($this->request->has('location')) {
+        $currentLocation = $this->request->get('location');
+    ?>
+
+        <div class="row p-4" style="background-color:#66CDA3">
+            <div class="col-12">
+                <div class="row h3 text-info">
+                    Forecast in <?php echo $location->location['name'] ?> , <?php echo $location->location['region'] ?>
+                </div>
+                <div class="progress" style="height: 1px;">
+                    <div class="progress-bar" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <div class="row h2 mt-4 text-light">Now 
+                    ( <?php echo $location->current['temp_c'] ?> &#x2103; | <?php echo $location->current['temp_f'] ?> &#x2109; &nbsp;
+                    <?php echo $location->current['condition']['text'] ?> )
+                </div>
+                <?php foreach ($location->forecast['forecastday'] as $forecast) { ?>
+                    <table class="table  table-striped mt-3">
+                        <thead>
+                            <tr>
+                                <th scope="col">
+                                    <div class="row h3 mt-3 text-info">
+                                        <?php echo $forecast['date'] ?> , <?php echo $location->location['region'] ?>
+                                    </div>
+                                </th>
+                                <th scope="col"></th>
+                                <th scope="col"></th>
+                                <th scope="col"></th>
+                                <th scope="col"></th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($forecast['hour'] as $hour) { ?>
+
+                                <tr>
+                                    <th scope="row"><?php echo $hour['time'] ?></th>
+                                    <td><?php echo $hour['temp_c'] . ' &#x2103; | ' . $hour['temp_f'].' &#x2109' ?></td>
+                                    <td><?php echo $hour['condition']['text'] ?></td>
+                                    <td><?php echo $hour['precip_mm'] . " mm" ?></td>
+                                    <td><?php echo $hour['wind_kph'] . " km/hr " . $hour['wind_dir'] ?></td>
+
+                                </tr>
+                    <?php }
+                        }
+                    } ?>
+                        </tbody>
+                    </table>
+            </div>
+        </div>
+
+</body>
+
+</html>

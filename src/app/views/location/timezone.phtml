@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body class='bg-dark container'>
+
+    <?php if ($this->request->has('location')) {
+        echo "<pre>";
+        $currentLocation = $this->request->get('location');
+
+        echo "</pre>";
+    ?>
+
+        <?php
+        echo "<pre>";
+        // print_r($location);
+        echo "</pre>"; ?>
+        <div class="row p-4" style="background-color:#66CDA3">
+            <div class="col-12">
+                <div class="row h3 text-light">
+                    Timezone <?php echo $location->location['name'] ?> , <?php echo $location->location['region'] ?>
+                </div>
+                <div class="progress" style="height: 1px;">
+                    <div class="progress-bar" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+
+                <div class="row h4 mt-4 text-light">
+
+                    <div class="col-6">
+                        <div class="row my-4">
+                            <div class="col-6">
+                                Name
+                            </div>
+                            <div class="col-6">
+                                <?php echo $location->location['name'] ?>
+                            </div>
+                        </div>
+                        <div class="row my-4">
+                            <div class="col-6">
+                                Region
+                            </div>
+                            <div class="col-6">
+                                <?php echo $location->location['region'] ?>
+                            </div>
+                        </div>
+                        <div class="row my-4">
+                            <div class="col-6">
+                                Country
+                            </div>
+                            <div class="col-6">
+                                <?php echo $location->location['country'] ?> mb
+                            </div>
+                        </div>
+                        <div class="row my-4">
+                            <div class="col-6">
+                                Time Zone
+                            </div>
+                            <div class="col-6">
+                                <?php echo $location->location['tz_id'] ?>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-6">
+                        <div class="row my-4">
+                            <div class="col-6">
+                                Latitude
+                            </div>
+                            <div class="col-6">
+                                <?php echo $location->location['lat'] ?> mm
+                            </div>
+                        </div>
+                        <div class="row my-4">
+                            <div class="col-6">
+                                Longitutde
+                            </div>
+                            <div class="col-6">
+                                <?php echo $location->location['lon'] ?>
+                            </div>
+                        </div>
+
+                        <div class="row my-4">
+                            <div class="col-6">
+                                Local Time
+                            </div>
+                            <div class="col-6">
+                                <?php echo $location->location['localtime'] ?>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+
+    <?php  } ?>
+
+</body>
+
+</html>
