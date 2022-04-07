@@ -1,0 +1,73 @@
+<?php
+date_default_timezone_set('Asia/Kolkata');
+$time =  (new DateTime())->format("H:i");
+
+if (isset($location->football[0])) {
+    $sportName = 'FOOTBALL';
+    $sport = $location->football;
+}
+if (isset($location->cricket[0])) {
+    $sportName = 'CRICKET';
+    $sport = $location->cricket;
+}
+if (isset($location->golf[0])) {
+    $sport = $location->golf;
+    $sportName = 'GOLF';
+}
+?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body class='bg-dark container'>
+
+    <?php if ($this->request->has('location')) {
+        $currentLocation = $this->request->get('location');
+    ?>
+
+        <div class="row p-4" style="background-color:#66CDA3">
+            <div class="col-12">
+                <div class="row h2 text-light mx-2">
+                    <?php echo $sportName ?>
+                </div>
+
+                <div class="row h2 mt-2 text-light">
+                </div>
+
+                <table class="table text-light table-striped mt-3">
+                    <thead>
+                        <tr>
+                            <th scope="col"> Stadium</th>
+                            <th scope="col">Country</th>
+                            <th scope="col">Tournament</th>
+                            <th scope="col">Start Time</th>
+                            <th scope="col">Match</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($sport as $match) { ?>
+                            <tr>
+                                <td scope="row"><?php echo $match['stadium'] ?></td>
+                                <td><?php echo $match['country']  ?></td>
+                                <td><?php echo $match['tournament']  ?></td>
+                                <td><?php echo $match['start']  ?></td>
+                                <td><?php echo $match['match']  ?></td>
+                            </tr>
+                    <?php
+                        }
+                    } ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+</body>
+
+</html>

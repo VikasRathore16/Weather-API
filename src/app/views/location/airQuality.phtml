@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body class="bg-dark mt-5 container">
+    <div class="row p-4" style="background-color:#66CDA3">
+        <div class="col-12">
+            <div class="row h3 text-light">
+                Air Quality in <?php echo $location->location['name'] ?> , <?php echo $location->location['region'] ?>
+            </div>
+            <div class="progress" style="height: 1px;">
+                <div class="progress-bar" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+            <div class="row h2 mt-4 text-light">
+                <?php echo $location->current['temp_c'] ?> &#x2103; | <?php echo $location->current['temp_f'] ?> &#x2109; &nbsp;
+                <span class="text-info"> <?php echo $location->current['condition']['text'] ?> </span>
+            </div>
+            <div class="row h4 mt-4 text-light">
+                <div class="col-6">
+                    <div class="row my-4">
+                        <div class="col-6">
+                            CO
+                        </div>
+                        <div class="col-6">
+                            <?php echo $location->current['air_quality']['co'] ?>
+                        </div>
+                    </div>
+                    <div class="row my-4">
+                        <div class="col-6">
+                            NO<sub>2</sub>
+                        </div>
+                        <div class="col-6">
+                            <?php echo $location->current['air_quality']['no2'] ?>
+                        </div>
+                    </div>
+                    <div class="row my-4">
+                        <div class="col-6">
+                            O<sub>3</sub>
+                        </div>
+                        <div class="col-6">
+                            <?php echo $location->current['air_quality']['o3'] ?>
+                        </div>
+                    </div>
+                    <div class="row my-4">
+                        <div class="col-6">
+                            SO<sub>2</sub>
+                        </div>
+                        <div class="col-6">
+                            <?php echo $location->current['air_quality']['so2'] ?>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="row my-4">
+                        <div class="col-6">
+                            PM<sub>2.5</sub>
+                        </div>
+                        <div class="col-6">
+                            <?php echo $location->current['air_quality']['pm2_5'] ?>
+                        </div>
+                    </div>
+                    <div class="row my-4">
+                        <div class="col-6">
+                            PM<sub>10</sub>
+                        </div>
+                        <div class="col-6">
+                            <?php echo $location->current['air_quality']['pm10'] ?>
+                        </div>
+                    </div>
+                    <div class="row my-4">
+                        <div class="col-6">
+                          US EPA Air Quality 
+                        </div>
+                        <div class="col-6">
+                            <?php echo $location->current['air_quality']['us-epa-index'] ?>
+                        </div>
+                    </div>
+                    <div class="row my-4">
+                        <div class="col-6">
+                        Daily Air Quality Index
+                        </div>
+                        <div class="col-6">
+                            <?php echo $location->current['air_quality']['gb-defra-index'] ?> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

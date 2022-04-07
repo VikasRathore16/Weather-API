@@ -17,7 +17,7 @@
     ?>
 
         <div class="row container">
-            <div class="col-4 my-2 bg-warning  d-flex justify-content-center p-5" style="height:200px">
+            <div class="col-4 my-2 bg-warning  d-flex justify-content-center p-5 rounded-lg" style="height:200px">
                 <p class="row text-light h2">
                     <?php echo $currentLocation;
                     ?>
@@ -30,7 +30,7 @@
                 <div class="row">
                     <?php echo $this->tag->linkTo(["location/forecast?location=$currentLocation", 'Forecast', 'class' => 'btn  mt-4 btn-danger mx-5']); ?>
                 </div>
-              
+
                 <div class="row">
                     <?php echo $this->tag->linkTo(["location/airQuality?location=$currentLocation", 'Air Quality', 'class' => 'btn mt-4 btn-success mx-5']); ?>
                 </div>
@@ -43,7 +43,7 @@
                     <?php echo $this->tag->linkTo(["location/sports?location=$currentLocation", 'Sports', 'class' => 'btn mt-4 btn-success mx-5']); ?>
                 </div>
                 <div class="row">
-                    <?php echo $this->tag->linkTo(["location/?astronomy=$currentLocation", 'Astronomy', 'class' => 'btn mt-4 btn-light mx-5']); ?>
+                    <?php echo $this->tag->linkTo(["location/astronomy?location=$currentLocation", 'Astronomy', 'class' => 'btn mt-4 btn-light mx-5']); ?>
                 </div>
                 <div class="row">
                     <?php echo $this->tag->linkTo(["location/weatherAlerts?location=$currentLocation", 'Weather Alerts', 'class' => 'btn mt-4 btn-warning mx-5']); ?>
@@ -51,11 +51,7 @@
             </div>
         </div>
         <hr class="mt-5">
-        <?php
-        echo "<pre>";
-        // print_r($location);
-        echo "</pre>"; ?>
-        <div class="row p-4" style="background-color:#66CDA3">
+        <div class="row p-4 rounded" style="background-color:#66CDA3">
             <div class="col-12">
                 <div class="row h3 text-light">
                     Weather in <?php echo $location->location['name'] ?> , <?php echo $location->location['region'] ?>
@@ -64,7 +60,7 @@
                     <div class="progress-bar" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
                 <div class="row h2 mt-4 text-light">
-                    <?php echo $location->current['temp_c'] ?> &#x2103; | <?php echo $location->current['temp_f'] ?> &#x2109; &nbsp;
+                    <img src="<?php echo $location->current['condition']['icon'] ?>">&nbsp; <?php echo $location->current['temp_c'] ?> &#x2103; | <?php echo $location->current['temp_f'] ?> &#x2109; &nbsp;
                     <span class="text-info"> <?php echo $location->current['condition']['text'] ?> </span>
                 </div>
                 <div class="row h4 mt-4 text-light">

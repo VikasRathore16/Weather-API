@@ -51,7 +51,7 @@ $time =  (new DateTime())->format("H:i");
 
                                 <tr>
                                     <th scope="row"><?php echo $hour['time'] ?></th>
-                                    <td><?php echo $hour['temp_c'] . ' &#x2103; | ' . $hour['temp_f'].' &#x2109' ?></td>
+                                    <td><img src="<?php echo $hour['condition']['icon'] ?>"><?php echo $hour['temp_c'] . ' &#x2103; | ' . $hour['temp_f'].' &#x2109' ?></td>
                                     <td><?php echo $hour['condition']['text'] ?></td>
                                     <td><?php echo $hour['precip_mm'] . " mm" ?></td>
                                     <td><?php echo $hour['wind_kph'] . " km/hr " . $hour['wind_dir'] ?></td>

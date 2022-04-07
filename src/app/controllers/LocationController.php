@@ -18,11 +18,8 @@ class LocationController extends Controller
     {
         if ($this->request->has('location')) {
             $location = $this->request->get('location');
-            $response = $this->find('forecast.json?key=', $this->config->get('api')['api_key'], '&q=' . $location.'&days=2');
+            $response = $this->find('forecast.json?key=', $this->config->get('api')['api_key'], '&q=' . $location . '&days=2');
             $this->view->location = $response;
-            // echo "<pre>";
-            // print_r($response);
-            // die();
         }
     }
 
@@ -32,9 +29,6 @@ class LocationController extends Controller
             $location = $this->request->get('location');
             $response = $this->find('timezone.json?key=', $this->config->get('api')['api_key'], '&q=' . $location);
             $this->view->location = $response;
-            // echo "<pre>";
-            // print_r($response);
-            // die();
         }
     }
 
@@ -44,9 +38,9 @@ class LocationController extends Controller
             $location = $this->request->get('location');
             $response = $this->find('sports.json?key=', $this->config->get('api')['api_key'], '&q=' . $location);
             $this->view->location = $response;
-            echo "<pre>";
-            print_r($response);
-            die();
+            // echo "<pre>";
+            // print_r($response);
+            // die();
         }
     }
 
@@ -56,9 +50,9 @@ class LocationController extends Controller
             $location = $this->request->get('location');
             $response = $this->find('astronomy.json?key=', $this->config->get('api')['api_key'], '&q=' . $location);
             $this->view->location = $response;
-            echo "<pre>";
-            print_r($response);
-            die();
+            // echo "<pre>";
+            // print_r($response);
+            // die();
         }
     }
 
@@ -68,8 +62,12 @@ class LocationController extends Controller
             $location = $this->request->get('location');
             $response = $this->find('forecast.json?key=', $this->config->get('api')['api_key'], '&q=' . $location . '&alerts=yes');
             $this->view->location = $response;
-            echo "<pre>";
-            print_r($response);
+            if (!isset($response->alerts['alert'][0])) {
+                echo "<h1> ALL OK </h1>";
+            } else {
+                print_r($response->alerts['alert'][0]);
+            }
+           
             die();
         }
     }
@@ -80,9 +78,6 @@ class LocationController extends Controller
             $location = $this->request->get('location');
             $response = $this->find('forecast.json?key=', $this->config->get('api')['api_key'], '&q=' . $location . '&aqi=yes');
             $this->view->location = $response;
-            echo "<pre>";
-            print_r($response);
-            die();
         }
     }
 
